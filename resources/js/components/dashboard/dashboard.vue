@@ -1,5 +1,5 @@
 <template>
-	<div class="text-3xl">Test</div>
+	<button class="text-3xl" @click="getUserList">Test</button>
 </template>
 
 <script>
@@ -15,6 +15,11 @@
 		created() {
 		},
 		methods: {
+			...mapActions('oUser', ['fetchUserList']),
+
+			getUserList() {
+				this.fetchUserList('');
+			}
 		}
 	}
 </script>
