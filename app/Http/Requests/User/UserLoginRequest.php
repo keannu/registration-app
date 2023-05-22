@@ -11,7 +11,6 @@ use Illuminate\Validation\Rule;
  * 
  * @author Keannu Rim Kristoffer C. Regala <keannu>
  * @since 2023.05.18
- * @version 1.0
  */
 class UserLoginRequest extends FormRequest
 {

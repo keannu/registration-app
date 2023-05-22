@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Cache;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,8 +16,20 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/login', function () {
     return view('login');
-});
+})->name('login')->middleware('authLoggedInChecker');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
+Route::middleware([ 'authChecker' ])->prefix('/dashboard')->group(function () {
+    $aParameters = [
+        'username' => Cache::get('username'),
+        'is_admin' => Cache::get('is_admin'),
+        'user_no'  => Cache::get('user_no')
+    ];
+
+    Route::get('/', function () use ($aParameters) {
+        return view('dashboard', $aParameters);
+    })->name('dashboard.main');
+
+    Route::get('/list', function () use ($aParameters) {
+        return view('dashboard', $aParameters);
+    })->name('dashboard.list')->middleware('checkIsAdmin');
 });

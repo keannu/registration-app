@@ -15,12 +15,15 @@ use App\Http\Controllers\User\UserController;
 |
 */
 
-Route::prefix('/user')->group(function() {
-    Route::get('/', [ UserController::class, 'getUserList' ]);
-    Route::get('/{id}', [ UserController::class, 'getUserByNo' ]);
+Route::middleware('authChecker')->prefix('/user')->group(function () {
+    Route::get('/', [ UserController::class, 'getUserList' ])->middleware('checkIsAdmin');
+    Route::get('/logout', [ UserController::class, 'logoutUser' ]);
+    Route::get('/{iUserNo}', [ UserController::class, 'getUserByNo' ]);
+    Route::put('/{iUserNo}', [ UserController::class, 'updateUser' ]);
+    Route::delete('/{iUserNo}', [ UserController::class, 'deleteUser' ]);
 });
 
-Route::prefix('/user')->group(function() {
+Route::middleware('authLoggedInChecker')->prefix('/user')->group(function () {
     Route::post('/login', [ UserController::class, 'loginUser' ]);
     Route::post('/', [ UserController::class, 'createUser' ]);
 });

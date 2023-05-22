@@ -32,7 +32,6 @@ class GetUserRequest extends FormRequest
     public function rules() : array
     {
         return [
-            'user_no'  => [ 'sometimes', 'int' ],
             'username' => [ 'sometimes' ],
             'email'    => [ 'sometimes' ],
             'is_admin' => [ 'sometimes' ]

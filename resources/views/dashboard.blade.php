@@ -6,10 +6,6 @@
         <title>Registration App Dashboard</title>
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css">
-
-        <!-- Fonts -->
-        <!-- <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" /> -->
     </head>
     <body>
         <div id="dashboard">
@@ -18,5 +14,10 @@
     </body>
     <footer>
         <script type="text/javascript" src="{{ mix('/js/dashboard.js') }}" charset="utf-8"></script>
+        <script type="text/javascript">
+            sessionStorage.setItem('user_no', '{{ $user_no }}');
+            sessionStorage.setItem('username', '{{ $username }}');
+            sessionStorage.setItem('is_admin', '{{ $is_admin }}');
+        </script>
     </footer>
 </html>

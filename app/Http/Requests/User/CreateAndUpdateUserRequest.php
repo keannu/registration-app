@@ -11,7 +11,6 @@ use Illuminate\Validation\Rule;
  * 
  * @author Keannu Rim Kristoffer C. Regala <keannu>
  * @since 2023.05.19
- * @version 1.0
  */
 class CreateAndUpdateUserRequest extends FormRequest
 {
@@ -33,10 +32,11 @@ class CreateAndUpdateUserRequest extends FormRequest
     public function rules() : array
     {
         return [
-            'username' => [ 'required', 'string', 'min:3', 'max:50' ],
-            'email'    => [ 'required', 'string', 'max:150' ],
-            'phone_no' => [ 'sometimes' ],
-            'password' => [ 'required', 'max:16', Password::min(8) ]
+            'username'           => [ 'sometimes', 'string', 'min:3', 'max:50' ],
+            'is_password_change' => [ 'sometimes' ],
+            'email'              => [ 'sometimes', 'string', 'max:150' ],
+            'phone_no'           => [ 'sometimes' ],
+            'password'           => [ 'sometimes', 'max:16', Password::min(8) ]
         ];
     }
 }

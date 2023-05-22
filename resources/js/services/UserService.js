@@ -13,10 +13,22 @@ export default {
      * fetchUserList
      * @author Keannu Rim Kristoffer C. Regala <keannu>
      * @since 2023.05.18
+     * @param objects oParameters
      * @returns { object }
      */
-    fetchUserList() {
-        return oUserServiceApiClient.get('', { params: { username: '' } });
+    fetchUserList(oParameters) {
+        return oUserServiceApiClient.get('', { params: oParameters });
+    },
+
+     /**
+     * fetchUser
+     * @author Keannu Rim Kristoffer C. Regala <keannu>
+     * @since 2023.05.20
+     * @param { int } iUserNo
+     * @returns { object }
+     */
+     fetchUser(iUserNo) {
+        return oUserServiceApiClient.get('/' + iUserNo);
     },
 
     /**
@@ -31,6 +43,16 @@ export default {
     },
 
     /**
+     * logout
+     * @author Keannu Rim Kristoffer C. Regala <keannu>
+     * @since 2023.05.20
+     * @returns { object }
+     */
+    logout() {
+        return oUserServiceApiClient.get('/logout');
+    },
+
+    /**
      * storeUser
      * @author Keannu Rim Kristoffer C. Regala <keannu>
      * @since 2023.05.19
@@ -39,5 +61,26 @@ export default {
      */
     storeUser(oUserInfo) {
         return oUserServiceApiClient.post('', oUserInfo);
+    },
+
+    /**
+     * updateUser
+     * @author Keannu Rim Kristoffer C. Regala <keannu>
+     * @since 2023.05.20
+     * @param objects oUserInfo
+     * @returns { object }
+     */
+    updateUser(oUserInfo) {
+        return oUserServiceApiClient.put('/' + oUserInfo.user_no, oUserInfo);
+    },
+
+    /**
+     * deleteUser
+     * @author Keannu Rim Kristoffer C. Regala <keannu>
+     * @since 2023.05.20
+     * @returns { object }
+     */
+    deleteUser(iUserNo) {
+        return oUserServiceApiClient.delete('/' + iUserNo);
     }
 }

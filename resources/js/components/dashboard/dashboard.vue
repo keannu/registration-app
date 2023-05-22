@@ -1,29 +1,23 @@
 <template>
-	<button class="text-3xl" @click="getUserList">Test</button>
+	<div class="min-h-screen bg-gray-300 flex items-center justify-center px-5 py-5" :class="sMinimumWidthClass">
+		<notifications />
+
+		<router-view />
+	</div>
 </template>
 
 <script>
-	import { mapActions } from 'vuex';
-
 	export default {
 		name: 'DashboardComponent',
-		data() {
-			return {
-				
-			}
-		},
-		created() {
-		},
-		methods: {
-			...mapActions('oUser', ['fetchUserList']),
-
-			getUserList() {
-				this.fetchUserList('');
+		computed: {
+			/**
+			 * sMinimumWidthClass
+			 * @author Keannu Rim Kristoffer C. Regala <keannu>
+			 * @since 2023.05.21
+			 */
+			sMinimumWidthClass() {
+				return (this.$route.name === 'dashboard.list') ? 'min-w-screen' : 'min-w-fit';
 			}
 		}
 	}
 </script>
-
-<style>
-
-</style>
