@@ -1,7 +1,7 @@
 # Prerequisites:
-Php 8: https://www.php.net/downloads.php
-NPM: https://nodejs.org/en/download
-xampp: https://www.apachefriends.org/download.html
+- Php 8: https://www.php.net/downloads.php
+- NPM: https://nodejs.org/en/download
+- xampp: https://www.apachefriends.org/download.html
 
 
 # How to setup:
